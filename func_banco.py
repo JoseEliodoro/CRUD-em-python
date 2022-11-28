@@ -1,17 +1,9 @@
 from tkinter import *
 from tkinter import ttk
 import sqlite3
-
-from reportlab.pdfgen import canvas
-""" from reportlab.lib.pagesizes import letter, A4
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont """
-from reportlab.platypus import SimpleDocTemplate, Image
-import webbrowser
-from PIL import ImageTk, Image
-import base64
-from fadsf import MyList
-from adicionar import Relatorios
+import io
+from tabela import MyList
+from relatorio import Relatorios
 
 class Funcs(MyList, Relatorios):
     # Função do Botão LIMPAR
@@ -36,12 +28,14 @@ class Funcs(MyList, Relatorios):
         self.conn.commit(); print("Banco de dados criado com sucesso")
         self.desconectar_bd()
 
+    # Função para obter os dados quando estiver adicionando
     def variaveis(self):
-        #self.id = self.id_entry.get()
         self.specie = self.specie_entry.get()
         self.order = self.order_entry.get()
         self.location = self.location_entry.get()
         self.date = self.date_entry.get()
+    
+   
         
     # Função do Botão NOVO para cadastrar novos clientes
     def add_cliente(self):
@@ -75,20 +69,18 @@ class Funcs(MyList, Relatorios):
         self.conn.commit()
         
         self.desconectar_bd()
-        #self.limpa_tela()
-        #self.select_lista()
 
-    # Função do botão ALTERAR para alterar os dados do cliente
+    # Função para pegar os dados quando estiver alterando
     def variaveis_edit(self):
         self.specie_edit = self.specie_entry_edit.get()
         self.order_edit = self.order_entry_edit.get()
         self.location_edit = self.location_entry_edit.get()
         self.date_edit = self.date_entry_edit.get()
-        
+   
+    # Função do botão ALTERAR para alterar os dados do cliente  
     def alterar_cliente(self, id):
         self.variaveis_edit()
         self.conectar_bd()
-        print(id)
         self.cursor.execute("UPDATE tbl_laboratorio SET specie = ?, order_v = ?,"
                             "location = ?, date_collect = ?  WHERE id = %d "%id,
                              (self.specie_edit, self.order_edit, self.location_edit, self.date_edit))
@@ -96,36 +88,29 @@ class Funcs(MyList, Relatorios):
         
         self.desconectar_bd()
         self.select_lista()
+        self.window_edit.destroy()
         #self.limpa_tela()
 
-    # Função do botão BUSCAR para selecionar os dados do cliente procurado
-    def busca_cliente(self):
-        self.conectar_bd()
-        
-        self.listaCli.delete(*self.listaCli.get_children())
-        
-        self.nome_entry.insert(END, '%')
-        nome = self. nome_entry.get()
-        self.cursor.execute(""" SELECT cod, nome_cliente, telefone, cidade FROM clientes
-                            WHERE nome_cliente LIKE '%s' ORDER BY nome_cliente ASC """ % nome)
-        buscaNomeCliente = self.cursor.fetchall()
-        
-        for i in buscaNomeCliente:
-            
-            self.listaCli.insert("", END, values=i)
-    
-        self.limpa_tela()
-        
-        self.desconectar_bd()
+    # Função que busca pelo id o registro
     def search_registry(self, id):
         self.conectar_bd()
         self.cursor.execute("SELECT * FROM tbl_laboratorio WHERE id=%d"%id)
         datas = self.cursor.fetchall()
         return datas[0]
+
+    def backup(self):
         
-    def imagem(self,caminho, t1,t2):
-        self.app_img = Image.open(caminho)
-        self.app_img = self.app_img.resize((t1,t2))
-        self.app_img = ImageTk.PhotoImage(self.app_img)
-        return self.app_img
-    
+        self.conectar_bd()
+        
+        # Open() function 
+        with io.open('backupcrudlab.db', 'w') as p: 
+                
+            # iterdump() function
+            for line in self.conn.iterdump(): 
+                
+                p.write('%s\n' % line)
+            
+        print(' Backup performed successfully!')
+        print(' Data Saved as backupdatabase_dump.db')
+        
+        self.desconectar_bd()

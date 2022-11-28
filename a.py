@@ -1,59 +1,57 @@
-import sqlite3 as lite
-from datetime import datetime
+from customtkinter import *
+from tkcalendar import DateEntry
+from PIL import Image, ImageTk
 
 
-# Criando conexão
-con = lite.connect('crudlab.db')
-
-# Inserir inventario
-def inserir_form(i):
-    with con:
-        cur = con.cursor()
-        query = "INSERT INTO tbl_laboratorio(specie, order_v, location, date_collect) VALUES (?,?,?,?)"
-        cur.execute(query, i)
-
-
-# Deletar inventario
-def deletar_form(i):
-   
-    with con:
-        cur = con.cursor()
-        query = "DELETE FROM tbl_laboratorio WHERE id=%d"%i
-        cur.execute(query)
+color_text_toplevel = 'purple'
+color_bg_toplevel = 'yellow'
+color_bg_entry_toplevel = 'blue'
+color_border_entry_top = 'white'
+color_text_button_toplevel = 'pink'
+color_bg_button_toplevel = 'red'
+color_border_button_toplevel = 'green'
+color_hover_button_toplevel = 'black'
 
 
-# Atualizar inventario
-def atualizar_form(i):
-    with con:
-        cur = con.cursor()
-        query = "UPDATE Inventario SET nome=?, local=?, descricao=?, marca=?, data_da_compra=?, valor_da_compra=?, serie=?, imagem=? WHERE id=?"
-        cur.execute(query, i)
+self.window_edit = CTkToplevel(self.janela)
+self.window_edit.title('clear')
+self.window_edit.geometry('270x450')
+self.window_edit.maxsize(width=300, height=500)
+self.window_edit.minsize(width=270, height=400)
+self.window_edit.config(background=color_bg_toplevel)
 
 
-# Ver Inventario
-def ver_form():
-    lista_itens = []
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT * FROM tbl_laboratorio")
-        rows = cur.fetchall()
-        for row in rows:
-            lista_itens.append(row)
-    return lista_itens
+self.img = Image.open('logo2.png')
+self.img = ImageTk.PhotoImage(self.img)
+self.lb_img = CTkLabel(self.window_edit, image=self.img)
+self.lb_img.place(relx=.15, rely=0.1)
+
+self.specie_entry_edit = CTkEntry(self.window_edit, placeholder_text='Espécie',  text_color=color_text_toplevel,
+                                fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+                                text_font='Arial 15')
+self.specie_entry_edit.place(relx=0.05, rely=0.4, relwidth=0.9)
 
 
-# Ver Iten no inventario
-def ver_iten(id):
-    lista_itens = []
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT * FROM tbl_laboratorio WHERE id=%d"%id)
-        rows = cur.fetchall()
-        for row in rows:
-            lista_itens.append(row)
-    return lista_itens
+self.order_entry_edit = CTkEntry(self.window_edit, placeholder_text='Order',  text_color=color_text_toplevel,
+                                fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+                                text_font='Arial 15')
+self.order_entry_edit.place(relx=0.05, rely=0.5, relwidth=0.9)
 
+
+self.location_entry_edit = CTkEntry(self.window_edit, placeholder_text='Local da coleta', text_color=color_text_toplevel,
+                                fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+                                text_font='Arial 15')
+self.location_entry_edit.place(relx=0.05, rely=0.6, relwidth=0.9)
+
+date_entry_edit = DateEntry(self.window_edit, font='Arial 15')
+date_entry_edit.place(relx=0.05, rely=0.7, relwidth=0.9)
+
+btn_add_edit = CTkButton(self.window_edit, text='Editar', text_font='Arial 15', cursor='hand2',
+                    text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
+                    border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel)
+btn_add_edit.place(relx=0.35, rely=0.85, relwidth=0.45, height=35)
 
 
 
-print(ver_iten(21))
+self.window_edit.grab_set()
+self.window_edit.mainloop()

@@ -1,0 +1,10 @@
+BEGIN TRANSACTION;
+CREATE TABLE tbl_laboratorio(id integer primary key autoincrement, specie text, order_v text, location text, date_collect date);
+INSERT INTO "tbl_laboratorio" VALUES(28,'adf','fadsf','ou','28/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(29,'aadfsfa','adsfadf','testd','01/08/2022');
+INSERT INTO "tbl_laboratorio" VALUES(31,'cade','aaaaaaaaaaaadfaf','testd','28/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(32,'teste1','test1','test1','15/06/2023');
+INSERT INTO "tbl_laboratorio" VALUES(33,'mmmmmmmmmm','gjhkghj',',mnbjk','28/11/2022');
+DELETE FROM "sqlite_sequence";
+INSERT INTO "sqlite_sequence" VALUES('tbl_laboratorio',33);
+COMMIT;
