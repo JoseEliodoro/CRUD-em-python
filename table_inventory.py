@@ -8,10 +8,10 @@ bg_color_button = 'purple'
 bg_hover_color_button = 'black'
 fg_color_line = 'blue'
 
-
-class MyList(CTkFrame):
-    
-    def create(self, master, datas):
+# Classe para a tabela da janela de inventário
+class TblInventory(CTkFrame):
+    # Função para Criar o esbolço da tabela
+    def create_invetory(self, master, datas):
         super().__init__(master)
         self.datas = datas
         #Imagens
@@ -41,13 +41,16 @@ class MyList(CTkFrame):
         self.internal_frame = CTkFrame(self.canvas, fg_color='#000')
         self.canvas.create_window((0, 0), window=self.internal_frame, anchor='nw')
         
-        self.__build()
+        self.__build_inventory()
         self.internal_frame.update_idletasks()
         self.canvas.config(scrollregion=self.canvas.bbox("all"))
 
-    def __build(self):
+    # Função que constroi os campos da tabela
+    def __build_inventory(self):
         
+        # for que criar uma linha para cada registro contido no banco
         for data in self.datas:
+            
             frame = Frame(self.internal_frame, bg=bg_color_line)
             frame.pack(fill = BOTH, expand = True)
             CTkLabel(frame, text=data[0], width=60, fg_color=bg_color_line, text_color=fg_color_line).pack(side=LEFT)
@@ -56,45 +59,43 @@ class MyList(CTkFrame):
                 specie = data[1][:27] + "..."
             else:
                 specie = data[1]
-            CTkLabel(frame, text=specie.title(), fg_color=bg_color_line, text_color=fg_color_line, width=220).pack(side=LEFT)
+            CTkLabel(frame, text=specie.title(), fg_color=bg_color_line, text_color=fg_color_line, width=300).pack(side=LEFT)
             
             if(len(data[2]) > 15):
                 order = data[2][:13] +"..."
             else:
                 order = data[2]
-            CTkLabel(frame, text=order, width=100, fg_color=bg_color_line, text_color=fg_color_line).pack(side=LEFT)
+            CTkLabel(frame, text=order, width=115, fg_color=bg_color_line, text_color=fg_color_line).pack(side=LEFT)
             
-            if(len(data[3]) > 15):
-                location = data[3][:13] +"..."
-            else:
-                location = data[3]
-            CTkLabel(frame, text=location, width=100, fg_color=bg_color_line, text_color=fg_color_line).pack(side=LEFT)
+            CTkLabel(frame, text=data[3], width=100, fg_color=bg_color_line, text_color=fg_color_line).pack(side=LEFT)
             
-            CTkLabel(frame, text=data[4], width=100, fg_color=bg_color_line, text_color=fg_color_line).pack(side=LEFT)
-            
-            self.new_button_edit(frame, data[0])
-            self.new_button_excluir(frame, data[0])
-            self.new_button_descricao(frame, data[0])
-     
-    def new_button_edit(self, master, id):
+            self.new_button_edit_inventory(frame, data[0])
+            self.new_button_excluir_inventory(frame, data[0])
+            self.new_button_descricao_inventory(frame, data[0])
+    
+    # Função para criar novo botão de edição do registro
+    def new_button_edit_inventory(self, master, id):
         return CTkButton(master, text='', image=self.img_edit, width=12, cursor='hand2',
                          fg_color=bg_color_button, hover_color=bg_hover_color_button,
-                         command=lambda *a: self.edit_reg(id)).pack(side=LEFT)
-    
-    def new_button_excluir(self, master, id):
+                         command=lambda *a: self.edit_register_inventory(id)).pack(side=LEFT)
+        
+    # Função para criar novo botão de excluir registro
+    def new_button_excluir_inventory(self, master, id):
         return CTkButton(master, text='', image=self.img_delete, width=12, cursor='hand2',
                          fg_color=bg_color_button, hover_color=bg_hover_color_button,
-                         command=lambda *a: self.excluirasdf(master, id)).pack(side=LEFT)
+                         command=lambda *a: self.put_register_inventory(master, id)).pack(side=LEFT)
     
-    def new_button_descricao(self, master, id):
+    # Função para criar novo botão de descrição do registro
+    def new_button_descricao_inventory(self, master, id):
         return CTkButton(master, text='', image=self.img_descri, width=12, cursor='hand2',
                          fg_color=bg_color_button, hover_color=bg_hover_color_button,
-                         command=lambda *a: self.gerarRelatorioClientes('tbl_laboratorio', id)).pack(side=LEFT)
+                         command=lambda *a: self.relatorio('tbl_inventory', id)).pack(side=LEFT)
     
-    def excluirasdf(self, master, id):
+    def put_register_inventory(self, master, id):
         master.destroy()
-        self.deleta_cliente('tbl_laboratorio', id)
+        self.deleta_cliente('tbl_inventory', id)
         
-    def edit_reg(self, id):
-        self.screen_edit(id)
+    def edit_register_inventory(self, id):
+        print(id)
+        self.screen_edit_inventroy(id)
         
