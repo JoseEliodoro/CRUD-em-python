@@ -3,16 +3,17 @@ from tkinter import ttk
 from customtkinter import *
 from PIL import ImageTk, Image
 
-bg_color_line = 'yellow'
-bg_color_button = 'purple'
-bg_hover_color_button = 'black'
-fg_color_line = 'blue'
-
+bg_color_line = '#d3d3d3'
+bg_color_button_descri = '#2c605f'
+bg_color_button_put = '#d36e6e'
+bg_color_button_edit = '#5f8e9f'
+bg_hover_color_button = '#008080'
+fg_color_line = '#000'
 
 class MyList(CTkFrame):
     
     def create(self, master, datas):
-        super().__init__(master)
+        super().__init__(master, bg_color='#008080')
         self.datas = datas
         #Imagens
         self.img_edit = Image.open('icon-edit.png')
@@ -78,17 +79,17 @@ class MyList(CTkFrame):
      
     def new_button_edit(self, master, id):
         return CTkButton(master, text='', image=self.img_edit, width=12, cursor='hand2',
-                         fg_color=bg_color_button, hover_color=bg_hover_color_button,
+                         fg_color=bg_color_button_edit, hover_color=bg_hover_color_button,
                          command=lambda *a: self.edit_reg(id)).pack(side=LEFT)
     
     def new_button_excluir(self, master, id):
         return CTkButton(master, text='', image=self.img_delete, width=12, cursor='hand2',
-                         fg_color=bg_color_button, hover_color=bg_hover_color_button,
+                         fg_color=bg_color_button_put, hover_color=bg_hover_color_button,
                          command=lambda *a: self.excluirasdf(master, id)).pack(side=LEFT)
     
     def new_button_descricao(self, master, id):
         return CTkButton(master, text='', image=self.img_descri, width=12, cursor='hand2',
-                         fg_color=bg_color_button, hover_color=bg_hover_color_button,
+                         fg_color=bg_color_button_descri, hover_color=bg_hover_color_button,
                          command=lambda *a: self.gerarRelatorioClientes(id)).pack(side=LEFT)
     
     def excluirasdf(self, master, id):

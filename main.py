@@ -8,16 +8,16 @@ from PIL import Image, ImageTk
 
 color0 = '#000'
 color1 = '#fff'
-color2 = '#111'
-color3 = '#cecece'
-color_text_toplevel = 'purple'
-color_bg_toplevel = 'yellow'
+color2 = '#008080'
+color3 = '#008080'
+color_text_toplevel = color1
+color_bg_toplevel = '#008080'
 color_bg_entry_toplevel = 'blue'
 color_border_entry_top = 'white'
-color_text_button_toplevel = 'pink'
+color_text_button_toplevel = color1
 color_bg_button_toplevel = 'red'
 color_border_button_toplevel = 'green'
-color_hover_button_toplevel = 'black'
+color_hover_button_toplevel = color2
 
 class Aplication(Funcs):
     def __init__(self, janela):
@@ -144,7 +144,7 @@ class Aplication(Funcs):
     # Criando os frames da janela inicial
     def frames_da_tela(self):
         
-        self.frame_1 = Frame(self.janela, bd=4, bg='#dfe3ee', 
+        self.frame_1 = Frame(self.janela, bd=4, bg=color2, 
                             highlightbackground='#759fe6', highlightthickness=3)
         self.frame_1.place(relx=0, rely=0, relwidth=1, relheight=0.46)
         
@@ -152,7 +152,7 @@ class Aplication(Funcs):
         self.frame_menu_internal = CTkFrame(self.janela, bg=color0)
         self.frame_menu_internal.place(x=0, y=0, relwidth=1, relheight=0.08)
         
-        self.frame_2 = Frame(self.janela, bd=4, bg='#dfe3ee',
+        self.frame_2 = Frame(self.janela, bd=4, bg=color2,
                             highlightbackground='#759fe6', highlightthickness=3)
         self.frame_2.place(relx=0.02, rely=0.5, relwidth=0.96, relheight=0.46)
         
@@ -204,7 +204,7 @@ class Aplication(Funcs):
     def widgets_frame_pg_inicial(self):
         
         self.btn_screen_add = CTkButton(self.frame_pg_inicial, text='ADD', text_font='Arial 20 bold', text_color=color1,
-                                 fg_color=color0, cursor='hand2', hover_color=color2,
+                                 fg_color='#2c605f', cursor='hand2', hover_color=color2,
                                  command=lambda: self.screen_add())
         self.btn_screen_add.place(relx=0.015, rely=0.02)
         
