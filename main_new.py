@@ -13,7 +13,7 @@ color3 = '#008080'
 color_text_toplevel = 'purple'
 color_bg_toplevel = '#008080'
 color_bg_entry_toplevel = 'blue'
-color_border_entry_top = 'white'
+color_border_entry_top = '#35363a'
 color_text_button_toplevel = 'pink'
 color_bg_button_toplevel = 'red'
 color_border_button_toplevel = 'green'
@@ -35,11 +35,12 @@ class Aplication(Funcs):
         
     def screen_add(self):
         self.window = CTkToplevel(self.janela)
-        self.window.title('clear')
+        self.window.title('Inserir Animal')
         self.window.geometry('270x450')
         self.window.maxsize(width=300, height=500)
         self.window.minsize(width=270, height=400)
         self.window.config(background=color_bg_toplevel)
+        self.window.iconbitmap('crudLabIcon.ico')
 
 
         self.img = Image.open('logo2.png')
@@ -47,20 +48,20 @@ class Aplication(Funcs):
         self.lb_img = CTkLabel(self.window, image=self.img)
         self.lb_img.place(relx=.15, rely=0.1)
 
-        self.specie_entry = CTkEntry(self.window, placeholder_text='Espécie',  text_color=color1,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.specie_entry = CTkEntry(self.window, placeholder_text='Espécie',  text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.specie_entry.place(relx=0.05, rely=0.4, relwidth=0.9)
 
 
-        self.order_entry = CTkEntry(self.window, placeholder_text='Order',  text_color=color1,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.order_entry = CTkEntry(self.window, placeholder_text='Order',  text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.order_entry.place(relx=0.05, rely=0.5, relwidth=0.9)
 
 
-        self.location_entry = CTkEntry(self.window, placeholder_text='Local da coleta', text_color=color1,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.location_entry = CTkEntry(self.window, placeholder_text='Local da coleta', text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.location_entry.place(relx=0.05, rely=0.6, relwidth=0.9)
         
@@ -68,14 +69,14 @@ class Aplication(Funcs):
         self.date_entry.place(relx=0.05, rely=0.7, relwidth=0.9)
 
         self.btn_add = CTkButton(self.window, text='Salvar', text_font='Arial 15', cursor='hand2',
-                            text_color=color1, fg_color=color_bg_button_toplevel,
+                            text_color=color1, fg_color='#2c605f',
                             border_color=color_border_button_toplevel, hover_color=color2,
                             command=self.add_cliente)
         self.btn_add.place(relx=0.05, rely=0.85, relwidth=0.45, height=35)
 
         self.btn_clear = CTkButton(self.window, text='Limpar', text_font='Arial 15', cursor='hand2',
-                            text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
-                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel)
+                            text_color=color1, fg_color='#2c605f',
+                            border_color=color_border_button_toplevel, hover_color=color2)
         self.btn_clear.place(relx=0.5, rely=0.85, relwidth=0.45, height=35)
 
         
@@ -90,6 +91,7 @@ class Aplication(Funcs):
         self.window_edit.maxsize(width=300, height=500)
         self.window_edit.minsize(width=270, height=400)
         self.window_edit.config(background=color_bg_toplevel)
+        
 
 
         self.img = Image.open('logo2.png')
@@ -98,7 +100,7 @@ class Aplication(Funcs):
         self.lb_img.place(relx=.15, rely=0.1)
 
         self.specie_entry_edit = CTkEntry(self.window_edit, placeholder_text='Espécie',  text_color=color1,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.specie_entry_edit.place(relx=0.05, rely=0.4, relwidth=0.9)
 
@@ -134,9 +136,10 @@ class Aplication(Funcs):
         self.window_edit.mainloop()
     # Criando a janela inicial
     def tela(self):
-        self.janela.title('Cadastro de Clientes')
+        self.janela.title('Cadastro de Animais')
         self.janela.configure(background='#1e3743')
         self.janela.geometry('700x500')
+        self.janela.iconbitmap('crudLabIcon.ico')
         self.janela.resizable(width=True,height=True)
         self.janela.maxsize(width=900, height=700)
         self.janela.minsize(width=500, height=400)
@@ -190,7 +193,7 @@ class Aplication(Funcs):
         self.frame_modi.place(x=0, rely=0.08, relheight=1, relwidth=1)
         self.frame = self.frame_modi
     def init_inventory(self):
-        self.frame_inventory = CTkFrame(self.janela, fg_color='red')
+        self.frame_inventory = CTkFrame(self.janela, fg_color='#008080')
         self.frame_inventory.place(x=0, rely=0.08, relheight=1, relwidth=1)
         self.frame = self.frame_inventory
     def init_backup(self):

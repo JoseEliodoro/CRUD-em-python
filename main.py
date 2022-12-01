@@ -14,7 +14,7 @@ color3 = '#008080'
 color_text_toplevel = 'purple'
 color_bg_toplevel = '#008080'
 color_bg_entry_toplevel = 'blue'
-color_border_entry_top = 'white'
+color_border_entry_top = '#35363a'
 color_text_button_toplevel = 'pink'
 color_bg_button_toplevel = 'red'
 color_border_button_toplevel = 'green'
@@ -38,32 +38,32 @@ class Aplication(Funcs):
     def screen_add(self):
         # Configurações da janela
         self.window = CTkToplevel(self.janela)
-        self.window.title('clear')
+        self.window.title('Inserir Animal')
         self.window.geometry('270x450')
         self.window.maxsize(width=300, height=500)
         self.window.minsize(width=270, height=400)
         self.window.config(background=color_bg_toplevel)
-
+        self.window.iconbitmap('crudLabIcon.ico')
         self.img = Image.open('logo2.png')
         self.img = ImageTk.PhotoImage(self.img)
         self.lb_img = CTkLabel(self.window, image=self.img)
         self.lb_img.place(relx=.15, rely=0.1)
 
         # Definindo entrys para entradas de dados
-        self.specie_entry = CTkEntry(self.window, placeholder_text='Espécie',  text_color=color1,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.specie_entry = CTkEntry(self.window, placeholder_text='Espécie',  text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.specie_entry.place(relx=0.05, rely=0.4, relwidth=0.9)
 
 
-        self.order_entry = CTkEntry(self.window, placeholder_text='Order',  text_color=color1,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.order_entry = CTkEntry(self.window, placeholder_text='Order',  text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.order_entry.place(relx=0.05, rely=0.5, relwidth=0.9)
 
 
-        self.location_entry = CTkEntry(self.window, placeholder_text='Local da coleta', text_color=color1,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.location_entry = CTkEntry(self.window, placeholder_text='Local da coleta', text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.location_entry.place(relx=0.05, rely=0.6, relwidth=0.9)
         
@@ -72,27 +72,27 @@ class Aplication(Funcs):
 
         # Definindo botão para add do novo registro
         self.btn_add = CTkButton(self.window, text='Salvar', text_font='Arial 15', cursor='hand2',
-                            text_color=color1, fg_color=color_bg_button_toplevel,
+                            text_color=color1, fg_color='#2c605f',
                             border_color=color_border_button_toplevel, hover_color=color2,
                             command=self.add_cliente)
         self.btn_add.place(relx=0.05, rely=0.85, relwidth=0.45, height=35)
 
         # Definindo botão para limpar as entradas de dados
         self.btn_clear = CTkButton(self.window, text='Limpar', text_font='Arial 15', cursor='hand2',
-                            text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
-                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel)
+                            text_color=color1, fg_color='#2c605f',
+                            border_color=color_border_button_toplevel, hover_color=color2)
         self.btn_clear.place(relx=0.5, rely=0.85, relwidth=0.45, height=35)
 
         
         self.date_entry = DateEntry(self.window, font='Arial 15')
         self.date_entry.place(relx=0.05, rely=0.7, relwidth=0.9)
 
-        self.btn_add = CTkButton(self.window, text='Salvar', text_font='Arial 15', cursor='hand2', text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
-                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel,  command=self.add_cliente)
+        self.btn_add = CTkButton(self.window, text='Salvar', text_font='Arial 15', cursor='hand2', text_color=color1, fg_color='#2c605f',
+                            border_color=color_border_button_toplevel, hover_color=color2,  command=self.add_cliente)
         self.btn_add.place(relx=0.05, rely=0.85, relwidth=0.45, height=35)
 
-        self.btn_clear = CTkButton(self.window, text='Limpar', text_font='Arial 15', cursor='hand2', text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
-                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel,
+        self.btn_clear = CTkButton(self.window, text='Limpar', text_font='Arial 15', cursor='hand2', text_color=color1, fg_color='#2c605f',
+                            border_color=color_border_button_toplevel, hover_color=color2,
                             command=self.clean_screen)
         self.btn_clear.place(relx=0.5, rely=0.85, relwidth=0.45, height=35)
 
@@ -103,11 +103,12 @@ class Aplication(Funcs):
     def screen_edit(self, id):
         # Configurações da janela
         self.window_edit = CTkToplevel(self.janela)
-        self.window_edit.title('clear')
+        self.window_edit.title('Alterar Item')
         self.window_edit.geometry('270x450')
         self.window_edit.maxsize(width=300, height=500)
         self.window_edit.minsize(width=270, height=400)
         self.window_edit.config(background=color_bg_toplevel)
+        self.window_edit.iconbitmap('crudLabIcon.ico')
 
         self.img = Image.open('logo2.png')
         self.img = ImageTk.PhotoImage(self.img)
@@ -115,20 +116,20 @@ class Aplication(Funcs):
         self.lb_img.place(relx=.15, rely=0.1)
 
         # Definindo entry para entradas de dados
-        self.specie_entry_edit = CTkEntry(self.window_edit, placeholder_text='Espécie',  text_color=color_text_toplevel,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.specie_entry_edit = CTkEntry(self.window_edit, placeholder_text='Espécie',  text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.specie_entry_edit.place(relx=0.05, rely=0.4, relwidth=0.9)
 
 
-        self.order_entry_edit = CTkEntry(self.window_edit, placeholder_text='Order',  text_color=color_text_toplevel,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.order_entry_edit = CTkEntry(self.window_edit, placeholder_text='Order',  text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.order_entry_edit.place(relx=0.05, rely=0.5, relwidth=0.9)
 
 
-        self.location_entry_edit = CTkEntry(self.window_edit, placeholder_text='Local da coleta', text_color=color_text_toplevel,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.location_entry_edit = CTkEntry(self.window_edit, placeholder_text='Local da coleta', text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.location_entry_edit.place(relx=0.05, rely=0.6, relwidth=0.9)
 
@@ -144,8 +145,8 @@ class Aplication(Funcs):
         
         # Definindo butão para edição
         self.btn_edit = CTkButton(self.window_edit, text='Editar', text_font='Arial 15', cursor='hand2',
-                            text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
-                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel, 
+                            text_color=color1, fg_color='#2c605f',
+                            border_color=color_border_button_toplevel, hover_color=color2, 
                             command=lambda: self.alterar_cliente(dados[0]))
         self.btn_edit.place(relx=0.25, rely=0.85, relwidth=0.50, height=35)
         
@@ -154,9 +155,10 @@ class Aplication(Funcs):
     
     # Função com as configurações da tela
     def tela(self):
-        self.janela.title('Cadastro de Clientes')
+        self.janela.title('Cadastro de Animais')
         self.janela.configure(background='#1e3743')
         self.janela.geometry('700x500')
+        self.janela.iconbitmap('crudLabIcon.ico')
         self.janela.resizable(width=True,height=True)
         self.janela.maxsize(width=900, height=700)
         self.janela.minsize(width=500, height=400)
@@ -223,7 +225,7 @@ class Aplication(Funcs):
    
     # Função para iniciar a tela do inventário
     def init_inventory(self):
-        self.frame_inventory = CTkFrame(self.janela, fg_color=color3)
+        self.frame_inventory = CTkFrame(self.janela, fg_color='#008080')
         self.frame_inventory.place(x=0, rely=0.08, relheight=1, relwidth=1)
         self.widgets_inventory()
         self.frame = self.frame_inventory
@@ -268,11 +270,12 @@ class Aplication(Funcs):
     def screen_add_inventory(self):
         # Configuração da tela de add do inventário
         self.window = CTkToplevel(self.janela)
-        self.window.title('clear')
+        self.window.title('Inserir Item')
         self.window.geometry('270x450')
         self.window.maxsize(width=300, height=500)
         self.window.minsize(width=270, height=400)
         self.window.config(background=color_bg_toplevel)
+        self.window.iconbitmap('crudLabIcon.ico')
 
         # Definindo logo
         self.img = Image.open('logo2.png')
@@ -281,14 +284,14 @@ class Aplication(Funcs):
         self.lb_img.place(relx=.15, rely=0.1)
 
         # Criando entradas
-        self.itens_entry = CTkEntry(self.window, placeholder_text='Item',  text_color=color_text_toplevel,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.itens_entry = CTkEntry(self.window, placeholder_text='Item',  text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.itens_entry.place(relx=0.05, rely=0.5, relwidth=0.9)
 
 
-        self.qtd_entry = CTkEntry(self.window, placeholder_text='Quantidade',  text_color=color_text_toplevel,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.qtd_entry = CTkEntry(self.window, placeholder_text='Quantidade',  text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.qtd_entry.place(relx=0.05, rely=0.6, relwidth=0.9)
 
@@ -298,14 +301,14 @@ class Aplication(Funcs):
 
         # Botões da tela
         self.btn_add = CTkButton(self.window, text='Salvar', text_font='Arial 15', cursor='hand2',
-                            text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
-                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel,
+                            text_color=color1, fg_color='#2c605f',
+                            border_color=color_border_button_toplevel, hover_color=color2,
                             command=self.add_inventory)
         self.btn_add.place(relx=0.05, rely=0.85, relwidth=0.45, height=35)
 
         self.btn_clear = CTkButton(self.window, text='Limpar', text_font='Arial 15', cursor='hand2',
-                            text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
-                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel,
+                            text_color=color1, fg_color='#2c605f',
+                            border_color=color_border_button_toplevel, hover_color=color2,
                             command=self.clean_screen_inventory)
         self.btn_clear.place(relx=0.5, rely=0.85, relwidth=0.45, height=35)
 
@@ -317,11 +320,12 @@ class Aplication(Funcs):
     def screen_edit_inventroy(self, id):
         # Configurações da janela
         self.window_edit = CTkToplevel(self.janela)
-        self.window_edit.title('clear')
+        self.window_edit.title('Alterar Item')
         self.window_edit.geometry('270x450')
         self.window_edit.maxsize(width=300, height=500)
         self.window_edit.minsize(width=270, height=400)
         self.window_edit.config(background=color_bg_toplevel)
+        self.window_edit.iconbitmap('crudLabIcon.ico')
 
 
         self.img = Image.open('logo2.png')
@@ -330,14 +334,14 @@ class Aplication(Funcs):
         self.lb_img.place(relx=.15, rely=0.1)
 
         # Definindo entry para entradas de dados
-        self.itens_entry_edit = CTkEntry(self.window_edit, placeholder_text='Item',  text_color=color_text_toplevel,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.itens_entry_edit = CTkEntry(self.window_edit, placeholder_text='Item',  text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.itens_entry_edit.place(relx=0.05, rely=0.4, relwidth=0.9)
 
 
-        self.qtd_entry_edit = CTkEntry(self.window_edit, placeholder_text='Quantidade',  text_color=color_text_toplevel,
-                                        fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
+        self.qtd_entry_edit = CTkEntry(self.window_edit, placeholder_text='Quantidade',  text_color=color0,
+                                        fg_color=color1, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.qtd_entry_edit.place(relx=0.05, rely=0.5, relwidth=0.9)
 
@@ -354,8 +358,8 @@ class Aplication(Funcs):
         
         # Definindo butão para edição
         self.btn_edit = CTkButton(self.window_edit, text='Editar', text_font='Arial 15', cursor='hand2',
-                            text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
-                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel, 
+                            text_color=color1, fg_color='#2c605f',
+                            border_color=color_border_button_toplevel, hover_color=color2, 
                             command=lambda: self.alterar_rigister_inventory(dados[0]))
         self.btn_edit.place(relx=0.25, rely=0.85, relwidth=0.50, height=35)
         
