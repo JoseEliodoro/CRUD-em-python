@@ -1,10 +1,14 @@
 BEGIN TRANSACTION;
 CREATE TABLE tbl_inventory(id integer primary key autoincrement, itens text, qtd text,  date_collect date);
-INSERT INTO "tbl_inventory" VALUES(1,'adf','dasf','30/11/2022');
+INSERT INTO "tbl_inventory" VALUES(1,'adf','dasf','10/11/2022');
+INSERT INTO "tbl_inventory" VALUES(3,'aaaaaa','bbbbb','01/11/2022');
+INSERT INTO "tbl_inventory" VALUES(4,'2a58dfadf','da5fads45fa','02/11/2022');
 CREATE TABLE tbl_laboratorio(id integer primary key autoincrement, specie text, order_v text, location text, date_collect date);
 INSERT INTO "tbl_laboratorio" VALUES(1,'oi','oi','oi','30/11/2022');
-INSERT INTO "tbl_laboratorio" VALUES(2,'teste','testr','','30/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(4,'adfa','dfadf','lkjkhg','30/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(5,'adfa','dfadf','lkjkhg','02/11/2022');
+CREATE TABLE tbl_modify(id integer primary key autoincrement, user TEXT, specie TEXT, order_v TEXT, location TEXT, date_collect DATE);
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('tbl_laboratorio',2);
-INSERT INTO "sqlite_sequence" VALUES('tbl_inventory',1);
+INSERT INTO "sqlite_sequence" VALUES('tbl_laboratorio',5);
+INSERT INTO "sqlite_sequence" VALUES('tbl_inventory',4);
 COMMIT;

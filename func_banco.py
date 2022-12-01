@@ -3,10 +3,18 @@ from tkinter import ttk
 import sqlite3
 import io
 from table_inventory import TblInventory
+from datetime import datetime
 from tabela import MyList
 from relatorio import Relatorios
 
 class Funcs(MyList, TblInventory, Relatorios):
+
+    # Função do Botão LIMPAR
+    def limpa_tela(self):
+        self.id_entry.delete(0, END)
+        self.specie_entry.delete(0, END)
+        self.order_entry.delete(0, END)
+        self.localtion_entry.delete(0, END)
     
     # Funções do BANCO DE DADOS
     def conectar_bd(self):
@@ -20,6 +28,14 @@ class Funcs(MyList, TblInventory, Relatorios):
         self.conectar_bd(); print("Conectando ao Banco de Dados")
         # Criando a tabela
         self.cursor.execute("Create table if not exists tbl_laboratorio(id integer primary key autoincrement, specie text, order_v text, location text, date_collect date)")
+        self.conn.commit(); print("Banco de dados criado com sucesso")
+        self.desconectar_bd()
+    
+    # Função da tabela da aba Modify
+    def create_tbl_lab(self):
+        self.conectar_bd(); print("Conectando ao Banco de Dados")
+        # Criando a tabela
+        self.cursor.execute("Create table if not exists tbl_modify(id integer primary key autoincrement, user TEXT, specie TEXT, order_v TEXT, location TEXT, date_collect DATE)")
         self.conn.commit(); print("Banco de dados criado com sucesso")
         self.desconectar_bd()
 
@@ -40,7 +56,16 @@ class Funcs(MyList, TblInventory, Relatorios):
         self.order = self.order_entry.get()
         self.location = self.location_entry.get()
         self.date = self.date_entry.get()
-      
+        #print(self.date)
+    
+   # Criando a função de limpar a tela
+    def clean_screen(self):
+        self.data_today = datetime.now()
+        self.specie_entry.delete(0, END)
+        self.order_entry.delete(0, END)
+        self.location_entry.delete(0, END)
+        self.date_entry.delete(0, END)
+        self.date_entry.set_date(self.data_today.strftime('%d/%m/%Y'))
         
     # Função para obter os dados quando estiver adicionando
     def variaveis_inventory(self):
@@ -68,7 +93,9 @@ class Funcs(MyList, TblInventory, Relatorios):
         self.conn.commit()
         self.desconectar_bd()
         self.select_lista_inventory()
-    
+        
+        self.clean_screen()
+        
     # Função para adicionar a tabela   
     def select_lista_inventory(self):
         #self.listaCli.delete(*self.listaCli.get_children())
@@ -101,6 +128,7 @@ class Funcs(MyList, TblInventory, Relatorios):
         self.select_lista_inventory()
         self.window_edit.destroy()
         #self.limpa_tela(
+        self.clean_screen()
     
     # Função para adicionar a tabela   
     def select_lista(self):

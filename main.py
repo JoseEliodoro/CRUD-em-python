@@ -43,7 +43,6 @@ class Aplication(Funcs):
         self.window.minsize(width=270, height=400)
         self.window.config(background=color_bg_toplevel)
 
-
         self.img = Image.open('logo2.png')
         self.img = ImageTk.PhotoImage(self.img)
         self.lb_img = CTkLabel(self.window, image=self.img)
@@ -84,6 +83,18 @@ class Aplication(Funcs):
         self.btn_clear.place(relx=0.5, rely=0.85, relwidth=0.45, height=35)
 
         
+        self.date_entry = DateEntry(self.window, font='Arial 15')
+        self.date_entry.place(relx=0.05, rely=0.7, relwidth=0.9)
+
+        self.btn_add = CTkButton(self.window, text='Salvar', text_font='Arial 15', cursor='hand2', text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
+                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel,  command=self.add_cliente)
+        self.btn_add.place(relx=0.05, rely=0.85, relwidth=0.45, height=35)
+
+        self.btn_clear = CTkButton(self.window, text='Limpar', text_font='Arial 15', cursor='hand2', text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
+                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel,
+                            command=self.clean_screen)
+        self.btn_clear.place(relx=0.5, rely=0.85, relwidth=0.45, height=35)
+
         self.window.grab_set()
         self.window.mainloop()
         
@@ -96,7 +107,6 @@ class Aplication(Funcs):
         self.window_edit.maxsize(width=300, height=500)
         self.window_edit.minsize(width=270, height=400)
         self.window_edit.config(background=color_bg_toplevel)
-
 
         self.img = Image.open('logo2.png')
         self.img = ImageTk.PhotoImage(self.img)
@@ -196,8 +206,10 @@ class Aplication(Funcs):
  
     # Função para iniciar a tela de modificações
     def init_modi(self):
+        # Frame 1 da tela modify
         self.frame_modi = CTkFrame(self.janela, fg_color=color3)
-        self.frame_modi.place(x=0, rely=0.08, relheight=1, relwidth=1)
+        self.frame_modi.place(x=0, rely=0.08, relheight=0.4, relwidth=1)
+        self.list_modify_frame()
         self.frame = self.frame_modi
    
     # Função para iniciar a tela do inventário
@@ -340,5 +352,58 @@ class Aplication(Funcs):
         self.window_edit.grab_set()
         self.window_edit.mainloop()
     
-
+    # Criando a Treeview do frame Modify    
+    def list_modify_frame(self):
+        self.list_modify_2 = ttk.Treeview(self.frame_modi, height=3, columns=("Col1", "Col2", "Col3","Col4","Col5","Col6"))
+        self.list_modify_2.heading("#0", text="")
+        self.list_modify_2.heading("#1", text="ID")
+        self.list_modify_2.heading("#2", text="Usuário")
+        self.list_modify_2.heading("#3", text="Espécie")
+        self.list_modify_2.heading("#4", text="Ordem")
+        self.list_modify_2.heading("#5", text="Local da Coleta")
+        self.list_modify_2.heading("#6", text="Data da Modificação")
+        
+        self.list_modify_2.column('#0', width=1)
+        self.list_modify_2.column('#1', width=30)
+        self.list_modify_2.column('#2', width=80)
+        self.list_modify_2.column('#3', width=125)
+        self.list_modify_2.column('#4', width=125)
+        self.list_modify_2.column('#5', width=125)
+        self.list_modify_2.column('#6', width=125)
+        
+        self.list_modify_2.place(relx=0.01, rely=0.01, relwidth=0.95, relheight=0.85)
+        
+        self.yscrool_lista = Scrollbar(self.frame_modi, orient='vertical')
+        self.xscrool_lista = Scrollbar(self.frame_modi, orient='horizontal')
+        self.list_modify_2.configure(yscrollcommand=self.yscrool_lista.set, xscrollcommand=self.xscrool_lista.set)
+        self.yscrool_lista.place(relx=0.96, rely=0.01, relwidth=0.02, relheight=0.85)
+        self.xscrool_lista.place(relx=0.01, rely=0.87, relwidth=0.95, relheight=0.08)
+    
+    # Criando a Treeview do frame_2 Modify    
+    def list_modify_frame_2(self):
+        self.list_modify_2 = ttk.Treeview(self.frame_modi_2, height=3, columns=("Col1", "Col2", "Col3","Col4","Col5","Col6"))
+        self.list_modify_2.heading("#0", text="")
+        self.list_modify_2.heading("#1", text="ID")
+        self.list_modify_2.heading("#2", text="Usuário")
+        self.list_modify_2.heading("#3", text="Espécie")
+        self.list_modify_2.heading("#4", text="Ordem")
+        self.list_modify_2.heading("#5", text="Local da Coleta")
+        self.list_modify_2.heading("#6", text="Data da Mo")
+        
+        self.list_modify_2.column('#0', width=1)
+        self.list_modify_2.column('#1', width=30)
+        self.list_modify_2.column('#2', width=80)
+        self.list_modify_2.column('#3', width=125)
+        self.list_modify_2.column('#4', width=125)
+        self.list_modify_2.column('#5', width=125)
+        self.list_modify_2.column('#6', width=125)
+        
+        self.list_modify_2.place(relx=0.01, rely=0.01, relwidth=0.95, relheight=0.6)
+        
+        self.yscrool_lista = Scrollbar(self.frame_modi_2, orient='vertical')
+        self.xscrool_lista = Scrollbar(self.frame_modi_2, orient='horizontal')
+        self.list_modify_2.configure(yscrollcommand=self.yscrool_lista.set, xscrollcommand=self.xscrool_lista.set)
+        self.yscrool_lista.place(relx=0.96, rely=0.01, relwidth=0.02, relheight=0.85)
+        self.xscrool_lista.place(relx=0.01, rely=0.6, relwidth=0.95, relheight=0.05)
+    
 Aplication(CTk())

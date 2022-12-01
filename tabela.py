@@ -3,11 +3,13 @@ from tkinter import ttk
 from customtkinter import *
 from PIL import ImageTk, Image
 
-bg_color_line = 'yellow'
+bg_color_button_describle = 'yellow'
+bg_color_button_delete = '#b35f71'
+bg_color_button_edit = 'lightblue'
+bg_color_line = 'lightgreen'
 bg_color_button = 'purple'
 bg_hover_color_button = 'black'
 fg_color_line = 'blue'
-
 
 class MyList(CTkFrame):
     
@@ -38,7 +40,7 @@ class MyList(CTkFrame):
         self.scroll_bar.place(relx=.98, rely=0, relwidth=.02, relheight=1)
         self.canvas.config(yscrollcommand = self.scroll_bar.set)
         
-        self.internal_frame = CTkFrame(self.canvas, fg_color='#000')
+        self.internal_frame = CTkFrame(self.canvas)
         self.canvas.create_window((0, 0), window=self.internal_frame, anchor='nw')
         
         self.__build()
