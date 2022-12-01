@@ -29,11 +29,11 @@ class Relatorios():
         #self.c.drawString(50, 550, 'descrição: ' )
         
         self.c.setFont("Helvetica", 18)
-        self.c.drawString(150, 700, self.idRel)
-        self.c.drawString(150, 670, self.specieRel)
-        self.c.drawString(150, 640, self.OrderRel)
-        self.c.drawString(150, 610, self.locationRel)
-        self.c.drawString(150, 580, self.dateRel)
+        self.c.drawString(200, 700, self.idRel)
+        self.c.drawString(200, 670, self.specieRel)
+        self.c.drawString(200, 640, self.OrderRel)
+        self.c.drawString(200, 610, self.locationRel)
+        self.c.drawString(200, 580, self.dateRel)
         #self.c.drawString(150, 580, self.descRel)
                     #x, y, width, height
         self.c.rect(25, 550, 550, 180, fill=False, stroke=True)

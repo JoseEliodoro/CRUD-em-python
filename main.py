@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from customtkinter import *
+""" from module import* """
 from func_banco import Funcs
 from tkcalendar import DateEntry
 
@@ -208,15 +209,17 @@ class Aplication(Funcs):
     def init_modi(self):
          # Frame 1 da tela modify
         self.frame_modi = CTkFrame(self.janela, fg_color=color3)
-        self.frame_modi.place(x=0, rely=0.08, relheight=0.4, relwidth=1)
+        self.frame_modi.place(x=0, rely=0.08, relheight=0.95, relwidth=1)
         self.list_modify_frame()
         self.frame = self.frame_modi
+        self.select_lista_modify()
         
         # Frame 2 da tela modify
-        self.frame_modi_2 = CTkFrame(self.janela, fg_color=color3)
+        """ self.frame_modi_2 = CTkFrame(self.janela, fg_color=color3)
         self.frame_modi_2.place(x=0, rely=0.5, relheight=0.75, relwidth=1)
         self.list_modify_frame_2()
-        self.frame = self.frame_modi_2
+        self.frame = self.frame_modi_2 """
+        
    
     # Função para iniciar a tela do inventário
     def init_inventory(self):
@@ -359,58 +362,55 @@ class Aplication(Funcs):
         self.window_edit.grab_set()
         self.window_edit.mainloop()
     
-    # Criando a Treeview do frame Modify    
+   # Criando a Treeview do frame Modify    
     def list_modify_frame(self):
-        self.list_modify_2 = ttk.Treeview(self.frame_modi, height=3, columns=("Col1", "Col2", "Col3","Col4","Col5","Col6"))
-        self.list_modify_2.heading("#0", text="")
-        self.list_modify_2.heading("#1", text="ID")
-        self.list_modify_2.heading("#2", text="Usuário")
-        self.list_modify_2.heading("#3", text="Espécie")
-        self.list_modify_2.heading("#4", text="Ordem")
-        self.list_modify_2.heading("#5", text="Local da Coleta")
-        self.list_modify_2.heading("#6", text="Data da Modificação")
+        self.list_modify = ttk.Treeview(self.frame_modi, height=3, columns=("Col1", "Col2", "Col3","Col4","Col5"))
+        self.list_modify.heading("#0", text="")
+        self.list_modify.heading("#1", text="ID")
+        self.list_modify.heading("#2", text="Espécie")
+        self.list_modify.heading("#3", text="Ordem")
+        self.list_modify.heading("#4", text="Local da Coleta")
+        self.list_modify.heading("#5", text="Data da Modificação")
         
-        self.list_modify_2.column('#0', width=1)
-        self.list_modify_2.column('#1', width=30)
-        self.list_modify_2.column('#2', width=80)
-        self.list_modify_2.column('#3', width=125)
-        self.list_modify_2.column('#4', width=125)
-        self.list_modify_2.column('#5', width=125)
-        self.list_modify_2.column('#6', width=125)
+        self.list_modify.column('#0', width=1)
+        self.list_modify.column('#1', width=30)
+        self.list_modify.column('#2', width=125)
+        self.list_modify.column('#3', width=125)
+        self.list_modify.column('#4', width=125)
+        self.list_modify.column('#5', width=125)
         
-        self.list_modify_2.place(relx=0.01, rely=0.01, relwidth=0.95, relheight=0.85)
+        self.list_modify.place(relx=0.01, rely=0.01, relwidth=0.95, relheight=0.92)
         
         self.yscrool_lista = Scrollbar(self.frame_modi, orient='vertical')
         self.xscrool_lista = Scrollbar(self.frame_modi, orient='horizontal')
-        self.list_modify_2.configure(yscrollcommand=self.yscrool_lista.set, xscrollcommand=self.xscrool_lista.set)
-        self.yscrool_lista.place(relx=0.96, rely=0.01, relwidth=0.02, relheight=0.85)
-        self.xscrool_lista.place(relx=0.01, rely=0.87, relwidth=0.95, relheight=0.08)
+        self.list_modify.configure(yscrollcommand=self.yscrool_lista.set, xscrollcommand=self.xscrool_lista.set)
+        self.yscrool_lista.place(relx=0.96, rely=0.01, relwidth=0.02, relheight=0.92)
+        self.xscrool_lista.place(relx=0.01, rely=0.93, relwidth=0.95, relheight=0.03)
     
+       
     # Criando a Treeview do frame_2 Modify    
-    def list_modify_frame_2(self):
-        self.list_modify_2 = ttk.Treeview(self.frame_modi_2, height=3, columns=("Col1", "Col2", "Col3","Col4","Col5","Col6"))
+    """ def list_modify_frame_2(self):
+        self.list_modify_2 = ttk.Treeview(self.frame_modi_2, height=3, columns=("Col1", "Col2", "Col3","Col4","Col5"))
         self.list_modify_2.heading("#0", text="")
         self.list_modify_2.heading("#1", text="ID")
-        self.list_modify_2.heading("#2", text="Usuário")
-        self.list_modify_2.heading("#3", text="Espécie")
-        self.list_modify_2.heading("#4", text="Ordem")
-        self.list_modify_2.heading("#5", text="Local da Coleta")
-        self.list_modify_2.heading("#6", text="Data da Mo")
+        self.list_modify_2.heading("#2", text="Espécie")
+        self.list_modify_2.heading("#3", text="Ordem")
+        self.list_modify_2.heading("#4", text="Local da Coleta")
+        self.list_modify_2.heading("#5", text="Data da Modificações")
         
         self.list_modify_2.column('#0', width=1)
         self.list_modify_2.column('#1', width=30)
-        self.list_modify_2.column('#2', width=80)
+        self.list_modify_2.column('#2', width=125)
         self.list_modify_2.column('#3', width=125)
         self.list_modify_2.column('#4', width=125)
         self.list_modify_2.column('#5', width=125)
-        self.list_modify_2.column('#6', width=125)
         
-        self.list_modify_2.place(relx=0.01, rely=0.01, relwidth=0.95, relheight=0.6)
+        self.list_modify_2.place(relx=0.01, rely=0.01, relwidth=0.95, relheight=0.59)
         
         self.yscrool_lista = Scrollbar(self.frame_modi_2, orient='vertical')
         self.xscrool_lista = Scrollbar(self.frame_modi_2, orient='horizontal')
         self.list_modify_2.configure(yscrollcommand=self.yscrool_lista.set, xscrollcommand=self.xscrool_lista.set)
-        self.yscrool_lista.place(relx=0.96, rely=0.01, relwidth=0.02, relheight=0.85)
-        self.xscrool_lista.place(relx=0.01, rely=0.6, relwidth=0.95, relheight=0.05)
+        self.yscrool_lista.place(relx=0.96, rely=0.01, relwidth=0.02, relheight=0.59)
+        self.xscrool_lista.place(relx=0.01, rely=0.6, relwidth=0.95, relheight=0.05) """
     
-#Aplication(CTk())
+Aplication(CTk())

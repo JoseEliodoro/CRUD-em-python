@@ -44,7 +44,7 @@ class MyList(CTkFrame):
         
         self.__build()
         self.internal_frame.update_idletasks()
-        self.canvas.config(scrollregion=self.canvas.bbox("all"))
+        self.canvas.config(scrollregion=self.canvas.bbox("all"), bg='#008080')
 
     def __build(self):
         
@@ -90,7 +90,7 @@ class MyList(CTkFrame):
     def new_button_descricao(self, master, id):
         return CTkButton(master, text='', image=self.img_descri, width=12, cursor='hand2',
                          fg_color=bg_color_button_descricao, hover_color=bg_hover_color_button,
-                         command=lambda *a: self.gerarRelatorioClientes(id)).pack(side=LEFT)
+                         command=lambda *a: self.gerarRelatorioClientes('tbl_laboratorio', id)).pack(side=LEFT)
     
     def excluirasdf(self, master, id):
         master.destroy()
