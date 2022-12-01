@@ -1,59 +1,15 @@
-import sqlite3 as lite
+import sqlite3
 from datetime import datetime
 
 
-# Criando conexão
-con = lite.connect('crudlab.db')
-
-# Inserir inventario
-def inserir_form(i):
-    with con:
-        cur = con.cursor()
-        query = "INSERT INTO tbl_laboratorio(specie, order_v, location, date_collect) VALUES (?,?,?,?)"
-        cur.execute(query, i)
-
-
-# Deletar inventario
-def deletar_form(i):
-   
-    with con:
-        cur = con.cursor()
-        query = "DELETE FROM tbl_laboratorio WHERE id=%d"%i
-        cur.execute(query)
-
-
-# Atualizar inventario
-def atualizar_form(i):
-    with con:
-        cur = con.cursor()
-        query = "UPDATE Inventario SET nome=?, local=?, descricao=?, marca=?, data_da_compra=?, valor_da_compra=?, serie=?, imagem=? WHERE id=?"
-        cur.execute(query, i)
-
-
-# Ver Inventario
-def ver_form():
-    lista_itens = []
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT * FROM tbl_laboratorio")
-        rows = cur.fetchall()
-        for row in rows:
-            lista_itens.append(row)
-    return lista_itens
-
-
-# Ver Iten no inventario
-def ver_iten(id):
-    lista_itens = []
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT * FROM tbl_laboratorio WHERE id=%d"%id)
-        rows = cur.fetchall()
-        for row in rows:
-            lista_itens.append(row)
-    return lista_itens
-
-
-
-
-print(ver_iten(21))
+def montaTabelas():
+    
+    conn = sqlite3.connect('crudlab.db')
+    cursor = conn.cursor()
+    
+    cursor.execute("Create table if not exists tbl_laboratorio(id integer primary key autoincrement, specie text, order_v text, location text, date_collect date)")
+    conn.commit(); print("Banco de dados criado com sucesso")
+    conn.close(); print("Desconectando o Banco de Dados")
+    
+data_today = datetime.now()
+print(data_today.strftime('%d/%m/%y'))

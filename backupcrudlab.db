@@ -1,0 +1,15 @@
+BEGIN TRANSACTION;
+CREATE TABLE tbl_laboratorio(id integer primary key autoincrement, specie text, order_v text, location text, date_collect date);
+INSERT INTO "tbl_laboratorio" VALUES(1,'Cannis Lupus','Carnivora','','30/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(2,'Vulpes vulpes','Carnivora','','30/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(3,'dasds','dsad','dsadsa','30/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(4,'dsa','','','30/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(5,'Cannis Lupus Familiares','Carnivoras','South America','30/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(6,'dsad','sd','sad','02/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(7,'Rato Rato','Roedor','America','01/12/2022');
+INSERT INTO "tbl_laboratorio" VALUES(8,'jdhalsjhdslajhd','dkjsahdjksah','dsadsad','30/11/22');
+INSERT INTO "tbl_laboratorio" VALUES(9,'dsdsa','dsadsa','zzzzzzzzz','30/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(10,'','','','30/11/2022');
+DELETE FROM "sqlite_sequence";
+INSERT INTO "sqlite_sequence" VALUES('tbl_laboratorio',10);
+COMMIT;
