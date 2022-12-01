@@ -17,15 +17,15 @@ class TblInventory(CTkFrame):
         super().__init__(master)
         self.datas = datas
         #Imagens
-        self.img_edit = Image.open('icon-edit.png')
+        self.img_edit = Image.open('img/icon-edit.png')
         self.img_edit = self.img_edit.resize((24, 24))
         self.img_edit = ImageTk.PhotoImage(self.img_edit)
         
-        self.img_delete = Image.open('icon-delete.png')
+        self.img_delete = Image.open('img/icon-delete.png')
         self.img_delete = self.img_delete.resize((24, 24))
         self.img_delete = ImageTk.PhotoImage(self.img_delete)
         
-        self.img_descri = Image.open('icon-descri.png')
+        self.img_descri = Image.open('img/icon-descri.png')
         self.img_descri = self.img_descri.resize((24, 24))
         self.img_descri = ImageTk.PhotoImage(self.img_descri)
         

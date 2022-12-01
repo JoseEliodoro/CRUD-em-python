@@ -5,11 +5,11 @@ import webbrowser
 
 # Criando a Classe que vai gerar os relatórios com os dados do cliente em PDF
 class Relatorios():
-    def printCliente(self):
-        webbrowser.open("clientes.pdf")
+    def open_folder(self, name):
+        webbrowser.open(name+".pdf")
     
     def gerarRelatorioClientes(self, table, id):
-        self.c = canvas.Canvas("clientes.pdf")
+        self.c = canvas.Canvas("animais.pdf")
         dados = self.search_registry(table, id)
         self.idRel = str(dados[0])
         self.specieRel = str(dados[1])
@@ -18,7 +18,7 @@ class Relatorios():
         self.dateRel = str(dados[4])
         #self.descRel = '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'''
         self.c.setFont("Helvetica-Bold", 24)
-        self.c.drawString(200, 790, 'Ficha do Cliente')
+        self.c.drawString(200, 790, 'Ficha de animais')
         
         self.c.setFont("Helvetica-Bold", 18)
         self.c.drawString(50, 700, 'Id: ' )
@@ -40,10 +40,10 @@ class Relatorios():
         
         self.c.showPage()
         self.c.save()
-        self.printCliente()
+        self.open_folder('animais')
         
     def relatorio(self, table, id):
-        self.c = canvas.Canvas("clientes.pdf")
+        self.c = canvas.Canvas("inventario.pdf")
         dados = self.search_registry(table, id)
         self.idRel = str(dados[0])
         self.specieRel = str(dados[1])
@@ -51,7 +51,7 @@ class Relatorios():
         self.dateRel = str(dados[3])
         #self.descRel = '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'''
         self.c.setFont("Helvetica-Bold", 24)
-        self.c.drawString(200, 790, 'Ficha do Cliente')
+        self.c.drawString(200, 790, 'Ficha de inventario')
         
         self.c.setFont("Helvetica-Bold", 18)
         self.c.drawString(50, 700, 'Id: ' )
@@ -71,5 +71,5 @@ class Relatorios():
         
         self.c.showPage()
         self.c.save()
-        self.printCliente()
+        self.open_folder('inventario')
         

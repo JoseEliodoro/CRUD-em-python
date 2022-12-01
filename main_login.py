@@ -1,7 +1,7 @@
 from customtkinter import *
 from tkinter import *
 from function import login, image
-from main2 import new_screen
+from main import Aplication
 
 color0 = '#43b9c6'
 color1 = '#347e87'
@@ -80,9 +80,10 @@ class ScreenLogin():
         
         self.lb_sem_cadastro = Label(self.root, text='Entrar sem cadastro.', fg=color2,
                                 bg=color1, cursor='hand2')
-        self.lb_sem_cadastro.bind('<Enter>', self.inside_hover)
+        #Entrar sem login
+        """ self.lb_sem_cadastro.bind('<Enter>', self.inside_hover)
         self.lb_sem_cadastro.bind('<Leave>', self.outside_hover)
-        self.lb_sem_cadastro.place(relx=.35, rely=.9)
+        self.lb_sem_cadastro.place(relx=.35, rely=.9) """
         
     def inside_hover(self, *args):
         self.lb_sem_cadastro['fg'] = '#fff'
@@ -95,12 +96,12 @@ class ScreenLogin():
         user = login(username, password)
         if user:
             self.root.destroy()
-            new_screen()
-        else:
+            Aplication(CTk())
+        """ else:
             print(self.frame_border_senha.fg_color)
             self.frame_border_senha.fg_color='#ff0000'
             self.frame_border_senha.destroy()
-            self.frame_border_senha.pack()
+            #self.frame_border_senha.pack() """
             
             
             

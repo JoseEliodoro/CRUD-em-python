@@ -16,15 +16,15 @@ class MyList(CTkFrame):
         super().__init__(master)
         self.datas = datas
         #Imagens
-        self.img_edit = Image.open('icon-edit.png')
+        self.img_edit = Image.open('img/icon-edit.png')
         self.img_edit = self.img_edit.resize((24, 24))
         self.img_edit = ImageTk.PhotoImage(self.img_edit)
         
-        self.img_delete = Image.open('icon-delete.png')
+        self.img_delete = Image.open('img/icon-delete.png')
         self.img_delete = self.img_delete.resize((24, 24))
         self.img_delete = ImageTk.PhotoImage(self.img_delete)
         
-        self.img_descri = Image.open('icon-descri.png')
+        self.img_descri = Image.open('img/icon-descri.png')
         self.img_descri = self.img_descri.resize((24, 24))
         self.img_descri = ImageTk.PhotoImage(self.img_descri)
         
@@ -90,7 +90,7 @@ class MyList(CTkFrame):
     def new_button_descricao(self, master, id):
         return CTkButton(master, text='', image=self.img_descri, width=12, cursor='hand2',
                          fg_color=bg_color_button_descricao, hover_color=bg_hover_color_button,
-                         command=lambda *a: self.gerarRelatorioClientes(id)).pack(side=LEFT)
+                         command=lambda *a: self.gerarRelatorioClientes('tbl_laboratorio', id)).pack(side=LEFT)
     
     def excluirasdf(self, master, id):
         master.destroy()

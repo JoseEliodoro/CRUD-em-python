@@ -43,7 +43,7 @@ class Aplication(Funcs):
         self.window.minsize(width=270, height=400)
         self.window.config(background=color_bg_toplevel)
 
-        self.img = Image.open('logo2.png')
+        self.img = Image.open('img/logo2.png')
         self.img = ImageTk.PhotoImage(self.img)
         self.lb_img = CTkLabel(self.window, image=self.img)
         self.lb_img.place(relx=.15, rely=0.1)
@@ -108,7 +108,7 @@ class Aplication(Funcs):
         self.window_edit.minsize(width=270, height=400)
         self.window_edit.config(background=color_bg_toplevel)
 
-        self.img = Image.open('logo2.png')
+        self.img = Image.open('img/logo2.png')
         self.img = ImageTk.PhotoImage(self.img)
         self.lb_img = CTkLabel(self.window_edit, image=self.img)
         self.lb_img.place(relx=.15, rely=0.1)
@@ -272,7 +272,7 @@ class Aplication(Funcs):
         self.window.config(background=color_bg_toplevel)
 
         # Definindo logo
-        self.img = Image.open('logo2.png')
+        self.img = Image.open('img/logo2.png')
         self.img = ImageTk.PhotoImage(self.img)
         self.lb_img = CTkLabel(self.window, image=self.img)
         self.lb_img.place(relx=.15, rely=0.1)
@@ -321,7 +321,7 @@ class Aplication(Funcs):
         self.window_edit.config(background=color_bg_toplevel)
 
 
-        self.img = Image.open('logo2.png')
+        self.img = Image.open('img/logo2.png')
         self.img = ImageTk.PhotoImage(self.img)
         self.lb_img = CTkLabel(self.window_edit, image=self.img)
         self.lb_img.place(relx=.15, rely=0.1)
