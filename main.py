@@ -43,7 +43,7 @@ class Aplication(Funcs):
         self.window.maxsize(width=300, height=500)
         self.window.minsize(width=270, height=400)
         self.window.config(background=color_bg_toplevel)
-        self.window.iconbitmap('crudLabIcon.ico')
+        self.window.iconbitmap('img/crudLabIcon.ico')
         
         self.img = Image.open('img/logo2.png')
         self.img = ImageTk.PhotoImage(self.img)
@@ -109,7 +109,7 @@ class Aplication(Funcs):
         self.window_edit.maxsize(width=300, height=500)
         self.window_edit.minsize(width=270, height=400)
         self.window_edit.config(background=color_bg_toplevel)
-        self.window_edit.iconbitmap('crudLabIcon.ico')
+        self.window_edit.iconbitmap('img/crudLabIcon.ico')
 
         self.img = Image.open('img/logo2.png')
         self.img = ImageTk.PhotoImage(self.img)
@@ -159,7 +159,7 @@ class Aplication(Funcs):
         self.janela.title('Cadastro de Animais')
         self.janela.configure(background='#1e3743')
         self.janela.geometry('700x500')
-        self.janela.iconbitmap('crudLabIcon.ico')
+        self.janela.iconbitmap('img/crudLabIcon.ico')
         self.janela.resizable(width=True,height=True)
         self.janela.maxsize(width=900, height=700)
         self.janela.minsize(width=500, height=400)
@@ -276,7 +276,7 @@ class Aplication(Funcs):
         self.window.maxsize(width=300, height=500)
         self.window.minsize(width=270, height=400)
         self.window.config(background=color_bg_toplevel)
-        self.window.iconbitmap('crudLabIcon.ico')
+        self.window.iconbitmap('img/crudLabIcon.ico')
 
         # Definindo logo
         self.img = Image.open('img/logo2.png')
@@ -326,7 +326,7 @@ class Aplication(Funcs):
         self.window_edit.maxsize(width=300, height=500)
         self.window_edit.minsize(width=270, height=400)
         self.window_edit.config(background=color_bg_toplevel)
-        self.window_edit.iconbitmap('crudLabIcon.ico')
+        self.window_edit.iconbitmap('img/crudLabIcon.ico')
 
 
         self.img = Image.open('img/logo2.png')
