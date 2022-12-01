@@ -413,4 +413,4 @@ class Aplication(Funcs):
         self.yscrool_lista.place(relx=0.96, rely=0.01, relwidth=0.02, relheight=0.85)
         self.xscrool_lista.place(relx=0.01, rely=0.6, relwidth=0.95, relheight=0.05)
     
-Aplication(CTk())
+#Aplication(CTk())
