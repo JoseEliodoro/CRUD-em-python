@@ -44,7 +44,7 @@ class MyList(CTkFrame):
         
         self.__build()
         self.internal_frame.update_idletasks()
-        self.canvas.config(scrollregion=self.canvas.bbox("all"))
+        self.canvas.config(scrollregion=self.canvas.bbox("all"), bg='#008080')
 
     def __build(self):
         
