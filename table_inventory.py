@@ -3,10 +3,12 @@ from tkinter import ttk
 from customtkinter import *
 from PIL import ImageTk, Image
 
-bg_color_line = 'yellow'
-bg_color_button = 'purple'
-bg_hover_color_button = 'black'
-fg_color_line = 'blue'
+bg_color_line = '#d3d3d3'
+bg_color_button_descricao = '#2c605f'
+bg_color_button_delete = '#d36e6e'
+bg_color_button_editar = '#5f8e9f'
+bg_hover_color_button = '#008080'
+fg_color_line = '#000'
 
 # Classe para a tabela da janela de inventário
 class TblInventory(CTkFrame):
@@ -76,19 +78,19 @@ class TblInventory(CTkFrame):
     # Função para criar novo botão de edição do registro
     def new_button_edit_inventory(self, master, id):
         return CTkButton(master, text='', image=self.img_edit, width=12, cursor='hand2',
-                         fg_color=bg_color_button, hover_color=bg_hover_color_button,
+                         fg_color=bg_color_button_editar, hover_color=bg_hover_color_button,
                          command=lambda *a: self.edit_register_inventory(id)).pack(side=LEFT)
         
     # Função para criar novo botão de excluir registro
     def new_button_excluir_inventory(self, master, id):
         return CTkButton(master, text='', image=self.img_delete, width=12, cursor='hand2',
-                         fg_color=bg_color_button, hover_color=bg_hover_color_button,
+                         fg_color=bg_color_button_delete, hover_color=bg_hover_color_button,
                          command=lambda *a: self.put_register_inventory(master, id)).pack(side=LEFT)
     
     # Função para criar novo botão de descrição do registro
     def new_button_descricao_inventory(self, master, id):
         return CTkButton(master, text='', image=self.img_descri, width=12, cursor='hand2',
-                         fg_color=bg_color_button, hover_color=bg_hover_color_button,
+                         fg_color=bg_color_button_descricao, hover_color=bg_hover_color_button,
                          command=lambda *a: self.relatorio('tbl_inventory', id)).pack(side=LEFT)
     
     def put_register_inventory(self, master, id):

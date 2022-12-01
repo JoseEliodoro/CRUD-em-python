@@ -8,10 +8,10 @@ from PIL import Image, ImageTk
 
 color0 = '#000'
 color1 = '#fff'
-color2 = '#111'
-color3 = '#cecece'
+color2 = '#008080'
+color3 = '#008080'
 color_text_toplevel = 'purple'
-color_bg_toplevel = 'yellow'
+color_bg_toplevel = '#008080'
 color_bg_entry_toplevel = 'blue'
 color_border_entry_top = 'white'
 color_text_button_toplevel = 'pink'
@@ -49,19 +49,19 @@ class Aplication(Funcs):
         self.lb_img.place(relx=.15, rely=0.1)
 
         # Definindo entrys para entradas de dados
-        self.specie_entry = CTkEntry(self.window, placeholder_text='Espécie',  text_color=color_text_toplevel,
+        self.specie_entry = CTkEntry(self.window, placeholder_text='Espécie',  text_color=color1,
                                         fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.specie_entry.place(relx=0.05, rely=0.4, relwidth=0.9)
 
 
-        self.order_entry = CTkEntry(self.window, placeholder_text='Order',  text_color=color_text_toplevel,
+        self.order_entry = CTkEntry(self.window, placeholder_text='Order',  text_color=color1,
                                         fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.order_entry.place(relx=0.05, rely=0.5, relwidth=0.9)
 
 
-        self.location_entry = CTkEntry(self.window, placeholder_text='Local da coleta', text_color=color_text_toplevel,
+        self.location_entry = CTkEntry(self.window, placeholder_text='Local da coleta', text_color=color1,
                                         fg_color=color_bg_entry_toplevel, border_color=color_border_entry_top,
                                         text_font='Arial 15')
         self.location_entry.place(relx=0.05, rely=0.6, relwidth=0.9)
@@ -71,8 +71,8 @@ class Aplication(Funcs):
 
         # Definindo botão para add do novo registro
         self.btn_add = CTkButton(self.window, text='Salvar', text_font='Arial 15', cursor='hand2',
-                            text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
-                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel,
+                            text_color=color1, fg_color=color_bg_button_toplevel,
+                            border_color=color_border_button_toplevel, hover_color=color2,
                             command=self.add_cliente)
         self.btn_add.place(relx=0.05, rely=0.85, relwidth=0.45, height=35)
 
@@ -163,7 +163,7 @@ class Aplication(Funcs):
     # Criando os frames da janela inicial
     def frames_da_tela(self):
         
-        self.frame_1 = Frame(self.janela, bd=4, bg='#dfe3ee', 
+        self.frame_1 = Frame(self.janela, bd=4, bg='#008080', 
                             highlightbackground='#759fe6', highlightthickness=3)
         self.frame_1.place(relx=0, rely=0, relwidth=1, relheight=0.46)
         
@@ -171,7 +171,7 @@ class Aplication(Funcs):
         self.frame_menu_internal = CTkFrame(self.janela, bg=color0)
         self.frame_menu_internal.place(x=0, y=0, relwidth=1, relheight=0.08)
         
-        self.frame_2 = Frame(self.janela, bd=4, bg='#dfe3ee',
+        self.frame_2 = Frame(self.janela, bd=4, bg='#008080',
                             highlightbackground='#759fe6', highlightthickness=3)
         self.frame_2.place(relx=0.02, rely=0.5, relwidth=0.96, relheight=0.46)
         
@@ -206,15 +206,21 @@ class Aplication(Funcs):
  
     # Função para iniciar a tela de modificações
     def init_modi(self):
-        # Frame 1 da tela modify
+         # Frame 1 da tela modify
         self.frame_modi = CTkFrame(self.janela, fg_color=color3)
         self.frame_modi.place(x=0, rely=0.08, relheight=0.4, relwidth=1)
         self.list_modify_frame()
         self.frame = self.frame_modi
+        
+        # Frame 2 da tela modify
+        self.frame_modi_2 = CTkFrame(self.janela, fg_color=color3)
+        self.frame_modi_2.place(x=0, rely=0.5, relheight=0.75, relwidth=1)
+        self.list_modify_frame_2()
+        self.frame = self.frame_modi_2
    
     # Função para iniciar a tela do inventário
     def init_inventory(self):
-        self.frame_inventory = CTkFrame(self.janela, fg_color='red')
+        self.frame_inventory = CTkFrame(self.janela, fg_color=color3)
         self.frame_inventory.place(x=0, rely=0.08, relheight=1, relwidth=1)
         self.widgets_inventory()
         self.frame = self.frame_inventory
@@ -235,7 +241,7 @@ class Aplication(Funcs):
         
         # Denifindo butão de add na janela de inventário
         self.btn_screen_add = CTkButton(self.frame_pg_inicial, text='ADD', text_font='Arial 20 bold', text_color=color1,
-                                 fg_color=color0, cursor='hand2', hover_color=color2,
+                                 fg_color='#2c605f', cursor='hand2', hover_color=color2,
                                  command=lambda: self.screen_add())
         self.btn_screen_add.place(relx=0.015, rely=0.02)
         
@@ -248,7 +254,7 @@ class Aplication(Funcs):
         
         # Denifindo butão de add na janela de inventário
         self.btn_screen_add = CTkButton(self.frame_inventory, text='ADD', text_font='Arial 20 bold', text_color=color1,
-                                 fg_color=color0, cursor='hand2', hover_color=color2,
+                                 fg_color='#2c605f', cursor='hand2', hover_color=color2,
                                  command=lambda: self.screen_add_inventory())
         self.btn_screen_add.place(relx=0.015, rely=0.02)  
         
@@ -296,7 +302,8 @@ class Aplication(Funcs):
 
         self.btn_clear = CTkButton(self.window, text='Limpar', text_font='Arial 15', cursor='hand2',
                             text_color=color_text_button_toplevel, fg_color=color_bg_button_toplevel,
-                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel)
+                            border_color=color_border_button_toplevel, hover_color=color_hover_button_toplevel,
+                            command=self.clean_screen_inventory)
         self.btn_clear.place(relx=0.5, rely=0.85, relwidth=0.45, height=35)
 
         

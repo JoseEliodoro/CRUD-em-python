@@ -3,13 +3,12 @@ from tkinter import ttk
 from customtkinter import *
 from PIL import ImageTk, Image
 
-bg_color_button_describle = 'yellow'
-bg_color_button_delete = '#b35f71'
-bg_color_button_edit = 'lightblue'
-bg_color_line = 'lightgreen'
-bg_color_button = 'purple'
-bg_hover_color_button = 'black'
-fg_color_line = 'blue'
+bg_color_line = '#d3d3d3'
+bg_color_button_descricao = '#2c605f'
+bg_color_button_delete = '#d36e6e'
+bg_color_button_editar = '#5f8e9f'
+bg_hover_color_button = '#008080'
+fg_color_line = '#000'
 
 class MyList(CTkFrame):
     
@@ -80,18 +79,18 @@ class MyList(CTkFrame):
      
     def new_button_edit(self, master, id):
         return CTkButton(master, text='', image=self.img_edit, width=12, cursor='hand2',
-                         fg_color=bg_color_button, hover_color=bg_hover_color_button,
+                         fg_color=bg_color_button_editar, hover_color=bg_hover_color_button,
                          command=lambda *a: self.edit_reg(id)).pack(side=LEFT)
     
     def new_button_excluir(self, master, id):
         return CTkButton(master, text='', image=self.img_delete, width=12, cursor='hand2',
-                         fg_color=bg_color_button, hover_color=bg_hover_color_button,
+                         fg_color=bg_color_button_delete, hover_color=bg_hover_color_button,
                          command=lambda *a: self.excluirasdf(master, id)).pack(side=LEFT)
     
     def new_button_descricao(self, master, id):
         return CTkButton(master, text='', image=self.img_descri, width=12, cursor='hand2',
-                         fg_color=bg_color_button, hover_color=bg_hover_color_button,
-                         command=lambda *a: self.gerarRelatorioClientes('tbl_laboratorio', id)).pack(side=LEFT)
+                         fg_color=bg_color_button_descricao, hover_color=bg_hover_color_button,
+                         command=lambda *a: self.gerarRelatorioClientes(id)).pack(side=LEFT)
     
     def excluirasdf(self, master, id):
         master.destroy()

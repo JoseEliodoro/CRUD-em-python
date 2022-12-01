@@ -66,6 +66,13 @@ class Funcs(MyList, TblInventory, Relatorios):
         self.location_entry.delete(0, END)
         self.date_entry.delete(0, END)
         self.date_entry.set_date(self.data_today.strftime('%d/%m/%Y'))
+    
+    def clean_screen_inventory(self):
+        self.data_today = datetime.now()
+        self.itens_entry.delete(0, END)
+        self.qtd_entry.delete(0, END)
+        self.date_entry_inventory.delete(0, END)
+        self.date_entry_inventory.set_date(self.data_today.strftime('%d/%m/%Y'))
         
     # Função para obter os dados quando estiver adicionando
     def variaveis_inventory(self):
@@ -83,6 +90,7 @@ class Funcs(MyList, TblInventory, Relatorios):
         self.conn.commit()
         self.desconectar_bd()
         self.select_lista()
+        self.clean_screen()
     
     # Função que add na tabela inventário
     def add_inventory(self):
@@ -94,7 +102,7 @@ class Funcs(MyList, TblInventory, Relatorios):
         self.desconectar_bd()
         self.select_lista_inventory()
         
-        self.clean_screen()
+        self.clean_screen_inventory()
         
     # Função para adicionar a tabela   
     def select_lista_inventory(self):
