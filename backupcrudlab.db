@@ -11,8 +11,9 @@ CREATE TABLE tbl_laboratorio(id integer primary key autoincrement, specie text, 
 INSERT INTO "tbl_laboratorio" VALUES(1,'oi','oi','oi','30/11/2022');
 INSERT INTO "tbl_laboratorio" VALUES(4,'adfa','dfadf','lkjkhg','30/11/2022');
 INSERT INTO "tbl_laboratorio" VALUES(5,'adfa','dfadf','lkjkhg','02/11/2022');
+INSERT INTO "tbl_laboratorio" VALUES(6,'aa','a','a','01/12/2022');
 CREATE TABLE tbl_modify(id integer primary key autoincrement, user TEXT, specie TEXT, order_v TEXT, location TEXT, date_collect DATE);
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('tbl_laboratorio',5);
+INSERT INTO "sqlite_sequence" VALUES('tbl_laboratorio',6);
 INSERT INTO "sqlite_sequence" VALUES('tbl_inventory',8);
 COMMIT;
