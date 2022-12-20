@@ -33,9 +33,9 @@ Execute o arquivo main_login.py sua senha e usuário padrão é 'admin'.
 ## ✒️ Autores
 
 Agradecemos todos os envolvidos. 
-* **Alex Costa** - *Trabalho Inicial* - [github](https://github.com/Alexcostap)
-* **José Carlos** - *Trabalho Inicial* - [github](https://github.com/JoseEliodoro)
-* **José Neto** - *Documentação* - [github](https://github.com/Neto-Pereira25)
+* **Alex Costa** - *Desenvolvedor banco/designer* - [github](https://github.com/Alexcostap)
+* **José Carlos** - *desenvolvedor/lider* - [github](https://github.com/JoseEliodoro)
+* **José Neto** - *Desenvolvedor* - [github](https://github.com/Neto-Pereira25)
 * **Murilo Chagas** - *Documentação* - [github](https://github.com/ChagasMurilo)
 * **Silvio Melo** - *Idealizador/apresentador* - [github](https://https://github.com/SilvioCMJ)
 
